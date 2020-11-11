@@ -1,5 +1,6 @@
 package de.zitzmanncedric.kickstart;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,18 +21,20 @@ public class ProfitCalculator {
     static final double profitPercentage = 0.4;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Please enter the retail price for one circuit board:");
+            int retailPrice = scanner.nextInt();
 
-        System.out.println("Please enter the retail price for one circuit board:");
-        int retailPrice = scanner.nextInt();
+            if (retailPrice < 0) {
+                System.out.println("You can not have a negative retail price!");
+                return;
+            }
 
-        if(retailPrice < 0) {
-            System.out.println("You can not have a negative retail price!");
-            return;
+            double totalProfit = retailPrice * profitPercentage;
+            System.out.println("Profit earned for that product: " + totalProfit);
+        } catch (NumberFormatException | InputMismatchException ex) {
+            System.out.println("You have to enter a valid number!");
         }
-
-        double totalProfit = retailPrice*profitPercentage;
-        System.out.println("Profit earned for that product: "+totalProfit);
     }
 
 }

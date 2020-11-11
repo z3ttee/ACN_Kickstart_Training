@@ -1,5 +1,6 @@
 package de.zitzmanncedric.kickstart;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -23,9 +24,7 @@ import java.util.Scanner;
 public class Booksellers {
 
     public static void main(String[] args) {
-        try {
-            Scanner scanner = new Scanner(System.in);
-
+        try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Please enter the amount of books you've bought:");
             int books = scanner.nextInt();
 
@@ -42,7 +41,7 @@ public class Booksellers {
             };
 
             System.out.println("By buying " + books + " books, you received " + bonusPoints + " bonus points.");
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException | InputMismatchException ex) {
             System.out.println("You have to enter a valid number!");
         }
     }

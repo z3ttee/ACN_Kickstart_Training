@@ -1,6 +1,7 @@
 package de.zitzmanncedric.kickstart;
 
 import java.text.NumberFormat;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -25,10 +26,8 @@ import java.util.Scanner;
 public class BMI {
 
     public static void main(String[] args) {
-        try {
+        try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Please enter your height in cm:");
-
-            Scanner scanner = new Scanner(System.in);
             double height = (double) Integer.parseInt(scanner.nextLine()) / 100;
 
             System.out.println("Please enter your weight in kg (e.g.: 70.5):");
@@ -48,7 +47,7 @@ public class BMI {
             } else if (bmi >= 25) {
                 System.out.println("Your BMI is " + format.format(bmi) + ". Übergewicht");
             }
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException | InputMismatchException ex) {
             System.out.println("You have to enter a valid number!");
         }
     }

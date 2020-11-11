@@ -25,29 +25,32 @@ import java.util.Scanner;
 public class BMI {
 
     public static void main(String[] args) {
-        System.out.println("Please enter your height in cm:");
+        try {
+            System.out.println("Please enter your height in cm:");
 
-        Scanner scanner = new Scanner(System.in);
-        double height = (double) Integer.parseInt(scanner.nextLine())/100;
+            Scanner scanner = new Scanner(System.in);
+            double height = (double) Integer.parseInt(scanner.nextLine()) / 100;
 
-        System.out.println("Please enter your weight in kg (e.g.: 70.5):");
-        double weight = Double.parseDouble(scanner.nextLine());
+            System.out.println("Please enter your weight in kg (e.g.: 70.5):");
+            double weight = Double.parseDouble(scanner.nextLine());
 
-        // BMI = weight x 703 / height ^ 2.
-        double bmi = (weight) / (height*height);
+            // BMI = weight x 703 / height ^ 2.
+            double bmi = (weight) / (height * height);
 
-        NumberFormat format = NumberFormat.getInstance();
-        format.setMaximumFractionDigits(2);
-        format.setMinimumFractionDigits(2);
+            NumberFormat format = NumberFormat.getInstance();
+            format.setMaximumFractionDigits(2);
+            format.setMinimumFractionDigits(2);
 
-        if(bmi < 18.5) {
-            System.out.println("Your BMI is "+format.format(bmi)+". Untergewicht");
-        } else if(bmi >= 18.5 && bmi <= 24.9) {
-            System.out.println("Your BMI is "+format.format(bmi)+". Normalgewicht");
-        } else if(bmi >= 25) {
-            System.out.println("Your BMI is "+format.format(bmi)+". Übergewicht");
+            if (bmi < 18.5) {
+                System.out.println("Your BMI is " + format.format(bmi) + ". Untergewicht");
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                System.out.println("Your BMI is " + format.format(bmi) + ". Normalgewicht");
+            } else if (bmi >= 25) {
+                System.out.println("Your BMI is " + format.format(bmi) + ". Übergewicht");
+            }
+        } catch (NumberFormatException ex) {
+            System.out.println("You have to enter a valid number!");
         }
-
     }
 
 }

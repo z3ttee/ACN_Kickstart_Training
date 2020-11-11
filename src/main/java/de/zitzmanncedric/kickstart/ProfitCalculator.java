@@ -25,6 +25,11 @@ public class ProfitCalculator {
         System.out.println("Please enter the retail price for one circuit board:");
         int retailPrice = scanner.nextInt();
 
+        if(retailPrice < 0) {
+            System.out.println("You can not have a negative retail price!");
+            return;
+        }
+
         double totalProfit = retailPrice*profitPercentage;
         System.out.println("Profit earned for that product: "+totalProfit);
     }

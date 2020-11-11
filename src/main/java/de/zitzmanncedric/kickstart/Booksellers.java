@@ -23,25 +23,29 @@ import java.util.Scanner;
 public class Booksellers {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        try {
+            Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter the amount of books you've bought:");
-        int books = scanner.nextInt();
-        int bonusPoints = 0;
+            System.out.println("Please enter the amount of books you've bought:");
+            int books = scanner.nextInt();
+            int bonusPoints = 0;
 
-        if(books < 1) {
-            System.out.println("You must have bought one book at least to receive bonus points");
-            return;
+            if (books < 1) {
+                System.out.println("You must have bought one book at least to receive bonus points");
+                return;
+            }
+
+            bonusPoints = switch (books) {
+                case 1 -> 5;
+                case 2 -> 15;
+                case 3 -> 30;
+                default -> 60;
+            };
+
+            System.out.println("By buying " + books + " books, you received " + bonusPoints + " bonus points.");
+        } catch (NumberFormatException ex) {
+            System.out.println("You have to enter a valid number!");
         }
-
-        bonusPoints = switch (books) {
-            case 1 -> 5;
-            case 2 -> 15;
-            case 3 -> 30;
-            default -> 60;
-        };
-
-        System.out.println("By buying "+books+" books, you received "+bonusPoints+" bonus points.");
     }
 
 }

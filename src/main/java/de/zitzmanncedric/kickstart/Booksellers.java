@@ -28,14 +28,13 @@ public class Booksellers {
 
             System.out.println("Please enter the amount of books you've bought:");
             int books = scanner.nextInt();
-            int bonusPoints = 0;
 
             if (books < 1) {
                 System.out.println("You must have bought one book at least to receive bonus points");
                 return;
             }
 
-            bonusPoints = switch (books) {
+            int bonusPoints = switch (books) {
                 case 1 -> 5;
                 case 2 -> 15;
                 case 3 -> 30;

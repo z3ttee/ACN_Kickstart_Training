@@ -1,4 +1,4 @@
-package de.zitzmanncedric.kickstart;
+package de.zitzmanncedric.kickstart.basics;
 
 /**
  * THE PROBLEM

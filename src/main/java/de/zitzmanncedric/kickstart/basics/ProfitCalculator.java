@@ -1,4 +1,4 @@
-package de.zitzmanncedric.kickstart;
+package de.zitzmanncedric.kickstart.basics;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
